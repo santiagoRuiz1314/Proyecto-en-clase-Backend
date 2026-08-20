@@ -1,58 +1,104 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🎾 DEUCE – Ecommerce de Raquetas de Tenis
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> Aplicación web desarrollada como proyecto universitario para aprender los fundamentos de PHP y del framework Laravel.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 👨‍💻 Santiago Steven Ruiz Carreño
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<img src="./foto.png" width ="300" height = "400">
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 📌 Descripción
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**DEUCE** es una tienda en línea de raquetas de tenis construida con Laravel como primer acercamiento al desarrollo backend con PHP. En ella se practican los conceptos esenciales del framework: el sistema de rutas (rutas simples, grupos con `prefix` y controladores invocables), los controladores, las vistas y la estructura MVC que Laravel propone.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+El frontend está resuelto con **HTML y CSS puro**: las cuatro vistas apuntan a una única hoja de estilos ubicada en `public/style.css`, sin JavaScript ni frameworks de CSS.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+Actualmente el proyecto expone cuatro rutas:
 
-## Agentic Development
+| Método | Ruta | Controlador | Descripción |
+| ------ | ---- | ----------- | ----------- |
+| `GET`  | `/` | `HomeController::__invoke` | Landing del ecommerce |
+| `GET`  | `/product` | `ProductController@index` | Listado de productos |
+| `GET`  | `/product/create` | `ProductController@create` | Formulario para crear un producto |
+| `GET`  | `/product/{idProduct}` | `ProductController@show` | Detalle de un producto |
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+> ⚠️ El orden importa: `/product/create` se declara **antes** que `/product/{idProduct}`, de lo contrario Laravel interpretaría `create` como el parámetro `idProduct`.
+
+---
+
+## 🚀 Tecnologías utilizadas
+
+- PHP 8.3+
+- Laravel 13
+- SQLite
+- Blade
+- HTML5 y CSS3 (hoja única en `public/style.css`)
+- Vite (incluido en el esqueleto de Laravel)
+
+---
+
+## ⚙️ Instalación
 
 ```bash
-composer require laravel/boost --dev
+git clone https://github.com/santiagoRuiz1314/Proyecto-en-clase-Backend.git
+cd Proyecto-en-clase-Backend
 
-php artisan boost:install
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+
+npm install
+npm run dev
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Luego levanta el servidor de desarrollo:
 
-## Contributing
+```bash
+php artisan serve
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+La aplicación quedará disponible en `http://localhost:8000`.
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 📂 Estructura del proyecto
 
-## Security Vulnerabilities
+```
+Proyecto-en-clase-Backend/
+├── app/
+│   ├── Http/Controllers/
+│   │   ├── HomeController.php
+│   │   └── ProductController.php
+│   ├── Models/
+│   └── Providers/
+├── bootstrap/
+├── config/
+├── database/
+│   ├── factories/
+│   ├── migrations/
+│   └── seeders/
+├── public/
+│   └── style.css
+├── resources/
+│   ├── css/
+│   ├── js/
+│   └── views/
+│       ├── home.blade.php
+│       └── product/
+│           ├── index.blade.php
+│           ├── create.blade.php
+│           └── show.blade.php
+├── routes/
+│   ├── console.php
+│   └── web.php
+├── storage/
+├── tests/
+├── composer.json
+└── package.json
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
