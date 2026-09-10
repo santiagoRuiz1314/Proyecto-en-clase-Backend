@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('table__cart__items', function (Blueprint $table) {
             $table->integer('quantity');
             $table->timestamps();
+            $table->id();
+
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('product_id')->references('id')->on('table_products')->onDelete('cascade');
+
         });
     }
 
