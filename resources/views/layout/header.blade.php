@@ -9,6 +9,7 @@
                 {{-- Visible ÚNICAMENTE para usuarios autenticados --}}
                 @auth
                     <a href="{{ route('products.create') }}">Publicar</a>
+                    <a href="{{ route('dashboard') }}">Mi panel</a>
                 @endauth
             </nav>
 
