@@ -1016,3 +1016,80 @@ button, input, select, textarea { font: inherit; color: inherit; }
     .newsletter-form input { border-radius: var(--radius-sm); }
     .detail__actions { flex-direction: column; }
 }
+
+/* --------------------------------------------------------------------------
+   21. Listado de productos en formato lista (sin imagen)
+   -------------------------------------------------------------------------- */
+.product-list {
+    border-top: 1px solid var(--line);
+}
+
+.product-list__row {
+    display: grid;
+    grid-template-columns: 1fr 160px auto;
+    align-items: center;
+    gap: 24px;
+    padding: 18px 4px;
+    border-bottom: 1px solid var(--line);
+}
+
+.product-list__row:hover { background: var(--paper-soft); }
+
+.product-list__name {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -.01em;
+}
+
+.product-list__cat {
+    margin-top: 4px;
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+}
+
+.product-list__price {
+    font-size: 16px;
+    font-weight: 600;
+    white-space: nowrap;
+    text-align: right;
+}
+
+.product-list__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.product-list__actions .btn {
+    padding: 8px 16px;
+    font-size: 13px;
+}
+
+/* Paginación: estados sin enlace (deshabilitado y puntos suspensivos) */
+.pagination span {
+    display: grid;
+    place-items: center;
+    min-width: 42px;
+    height: 42px;
+    padding: 0 14px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-size: 14px;
+    color: var(--ink-soft);
+}
+
+.pagination span.is-disabled { opacity: .45; }
+
+@media (max-width: 720px) {
+    .product-list__row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .product-list__price { text-align: left; }
+
+    .product-list__actions { justify-content: flex-start; }
+}

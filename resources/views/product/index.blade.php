@@ -31,20 +31,17 @@
                 </p>
             </div>
 
-            <div class="product-grid product-grid--3">
+            <div class="product-list">
                 @foreach ($products as $product)
-                    <article class="product-card">
-                        <a href="{{ route('products.show', $product) }}">
-                            <div class="product-card__body">
-                                <div>
-                                    <p class="product-card__name">{{ $product->name }}</p>
-                                    <p class="product-card__cat">{{ $product->category->name }}</p>
-                                </div>
-                                <p class="product-card__price">$ {{ number_format($product->price, 2) }}</p>
-                            </div>
-                        </a>
+                    <article class="product-list__row">
+                        <div>
+                            <a class="product-list__name" href="{{ route('products.show', $product) }}">{{ $product->name }}</a>
+                            <p class="product-list__cat">{{ $product->category->name }}</p>
+                        </div>
 
-                        <div class="form-actions">
+                        <p class="product-list__price">$ {{ number_format($product->price, 2) }}</p>
+
+                        <div class="product-list__actions">
                             <a class="btn btn--ghost" href="{{ route('products.show', $product) }}">Ver</a>
 
                             {{-- Opciones administrativas ocultas para visitantes --}}
@@ -62,7 +59,7 @@
                 @endforeach
             </div>
 
-            {{ $products->links() }}
+            {{ $products->links('vendor.pagination.deuce') }}
 
         </div>
     </section>
