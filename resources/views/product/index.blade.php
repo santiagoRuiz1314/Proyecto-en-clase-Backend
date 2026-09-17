@@ -46,13 +46,17 @@
 
                         <div class="form-actions">
                             <a class="btn btn--ghost" href="{{ route('products.show', $product) }}">Ver</a>
-                            <a class="btn btn--ghost" href="{{ route('products.edit', $product) }}">Editar</a>
 
-                            <form action="{{ route('products.destroy', $product) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn" type="submit" onclick="return confirm('¿Eliminar producto?')">Eliminar</button>
-                            </form>
+                            {{-- Opciones administrativas ocultas para visitantes --}}
+                            @auth
+                                <a class="btn btn--ghost" href="{{ route('products.edit', $product) }}">Editar</a>
+
+                                <form action="{{ route('products.destroy', $product) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn" type="submit" onclick="return confirm('¿Eliminar producto?')">Eliminar</button>
+                                </form>
+                            @endauth
                         </div>
                     </article>
                 @endforeach

@@ -12,7 +12,9 @@
                         <li><a href="{{ route('products.index') }}">Todas las raquetas</a></li>
                         <li><a href="{{ route('products.index') }}">Potencia</a></li>
                         <li><a href="{{ route('products.index') }}">Control</a></li>
-                        <li><a href="{{ route('products.create') }}">Publicar producto</a></li>
+                        @auth
+                            <li><a href="{{ route('products.create') }}">Publicar producto</a></li>
+                        @endauth
                     </ul>
                 </div>
 

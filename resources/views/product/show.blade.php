@@ -31,7 +31,9 @@
 
             <div class="detail__actions">
                 <a class="btn btn--ghost btn--lg" href="{{ route('products.index') }}">Seguir viendo</a>
-                <a class="btn btn--lg" href="{{ route('products.edit', $product) }}">Editar producto</a>
+                @auth
+                    <a class="btn btn--lg" href="{{ route('products.edit', $product) }}">Editar producto</a>
+                @endauth
             </div>
 
             <dl class="specs">

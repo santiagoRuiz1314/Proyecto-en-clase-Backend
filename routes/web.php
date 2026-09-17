@@ -7,7 +7,20 @@ use App\Http\Controllers\ProfileController;
 
 Route::get('/', HomeController::class); // landing ecomerce
 
-Route::resource('products', ProductController::class);
+// --- ACCESO PÚBLICO (Solo consulta) ---
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+
+// --- ACCESO RESTRINGIDO (Requiere iniciar sesión) ---
+Route::middleware(['auth'])->group(function () {
+    Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+    Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+    Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+    Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+    Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+});
+
+// Se declara despues de /products/create para que "create" no se confunda con un {product}
+Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
 // --- Rutas propias de Laravel Breeze ---
 Route::get('/dashboard', function () {
