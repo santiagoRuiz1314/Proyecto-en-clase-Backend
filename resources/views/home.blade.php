@@ -19,8 +19,8 @@
             </p>
 
             <div class="hero-cta">
-                <a class="btn btn--lg" href="/product">Ver el catálogo</a>
-                <a class="btn btn--ghost btn--lg" href="/product/1">Producto destacado</a>
+                <a class="btn btn--lg" href="{{ route('products.index') }}">Ver el catálogo</a>
+                <a class="btn btn--ghost btn--lg" href="{{ route('products.index') }}">Producto destacado</a>
             </div>
 
             <div class="hero-stats">
@@ -73,11 +73,11 @@
                     Si no sabes por dónde empezar, empieza por aquí.
                 </p>
             </div>
-            <a class="link-arrow" href="/product">Ver todas las categorías →</a>
+            <a class="link-arrow" href="{{ route('products.index') }}">Ver todas las categorías →</a>
         </div>
 
         <div class="categories">
-            <a class="category" href="/product">
+            <a class="category" href="{{ route('products.index') }}">
                 <img src="https://images.unsplash.com/photo-1542144582-1ba00456b5e3?auto=format&fit=crop&w=800&q=80" alt="Categoría potencia">
                 <div class="category-body">
                     <h3>Potencia</h3>
@@ -85,7 +85,7 @@
                 </div>
             </a>
 
-            <a class="category" href="/product">
+            <a class="category" href="{{ route('products.index') }}">
                 <img src="https://images.unsplash.com/photo-1545809074-59472b3f5ecc?auto=format&fit=crop&w=800&q=80" alt="Categoría control">
                 <div class="category-body">
                     <h3>Control</h3>
@@ -93,7 +93,7 @@
                 </div>
             </a>
 
-            <a class="category" href="/product">
+            <a class="category" href="{{ route('products.index') }}">
                 <img src="https://images.unsplash.com/photo-1632755898125-36cd72575dde?auto=format&fit=crop&w=800&q=80" alt="Categoría polivalente">
                 <div class="category-body">
                     <h3>Polivalente</h3>
@@ -112,11 +112,11 @@
                 <p class="eyebrow">Lo más pedido</p>
                 <h2 class="section-title">Destacadas de la semana</h2>
             </div>
-            <a class="link-arrow" href="/product">Ver listado completo →</a>
+            <a class="link-arrow" href="{{ route('products.index') }}">Ver listado completo →</a>
         </div>
 
         <div class="product-grid">
-            <a class="product-card" href="/product/1">
+            <a class="product-card" href="{{ route('products.index') }}">
                 <div class="product-card__media">
                     <span class="badge">Nuevo</span>
                     <img src="https://images.unsplash.com/photo-1530915365347-e35b749a0381?auto=format&fit=crop&w=700&q=80" alt="Vertex 98 Tour">
@@ -130,7 +130,7 @@
                 </div>
             </a>
 
-            <a class="product-card" href="/product/2">
+            <a class="product-card" href="{{ route('products.index') }}">
                 <div class="product-card__media">
                     <img src="https://images.unsplash.com/photo-1519611103964-90f61a50d3e6?auto=format&fit=crop&w=700&q=80" alt="Aero 100 Pro">
                 </div>
@@ -143,7 +143,7 @@
                 </div>
             </a>
 
-            <a class="product-card" href="/product/3">
+            <a class="product-card" href="{{ route('products.index') }}">
                 <div class="product-card__media">
                     <span class="badge badge--dark">-15%</span>
                     <img src="https://images.unsplash.com/photo-1646343253545-9171464ce425?auto=format&fit=crop&w=700&q=80" alt="Meridian 305">
@@ -157,7 +157,7 @@
                 </div>
             </a>
 
-            <a class="product-card" href="/product/4">
+            <a class="product-card" href="{{ route('products.index') }}">
                 <div class="product-card__media">
                     <img src="https://images.unsplash.com/photo-1684443726782-1d5bb1aecbd5?auto=format&fit=crop&w=700&q=80" alt="Slice One 100">
                 </div>
@@ -206,7 +206,7 @@
                     entre 285 y 310 gramos según tu técnica y cuántas horas juegas a la semana.
                 </p>
                 <div>
-                    <a class="btn btn--accent" href="/product">Leer la guía</a>
+                    <a class="btn btn--accent" href="{{ route('products.index') }}">Leer la guía</a>
                 </div>
             </div>
         </div>

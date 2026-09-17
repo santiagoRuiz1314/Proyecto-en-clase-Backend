@@ -1,7 +1,7 @@
 @extends('layout.app')
 
-@section('title', 'Publicar raqueta · DEUCE')
-@section('description', 'Formulario para crear un producto: nombre, categoría, precio y descripción.')
+@section('title', 'Editar ' . $product->name . ' · DEUCE')
+@section('description', 'Formulario para editar un producto existente.')
 
 @section('content')
 
@@ -13,11 +13,11 @@
             <span>/</span>
             <a href="{{ route('products.index') }}">Raquetas</a>
             <span>/</span>
-            <a href="{{ route('products.create') }}">Nuevo producto</a>
+            <a href="{{ route('products.edit', $product) }}">Editar</a>
         </nav>
 
-        <h1>Publicar una raqueta</h1>
-        <p>Completa la ficha del producto. Todos los campos son obligatorios.</p>
+        <h1>Editar {{ $product->name }}</h1>
+        <p>Modifica la ficha del producto y guarda los cambios.</p>
     </div>
 </section>
 
@@ -25,8 +25,9 @@
 <section class="container">
     <div class="create-layout">
 
-        <form class="form-card" action="{{ route('products.store') }}" method="POST">
+        <form class="form-card" action="{{ route('products.update', $product) }}" method="POST">
             @csrf
+            @method('PUT')
 
             <fieldset class="fieldset">
                 <legend>Identificación</legend>
@@ -34,7 +35,7 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="name">Nombre *</label>
-                        <input class="input" type="text" id="name" name="name" value="{{ old('name') }}" placeholder="Vertex 98 Tour">
+                        <input class="input" type="text" id="name" name="name" value="{{ old('name', $product->name) }}">
                         @error('name') <span class="hint" style="color:red;">{{ $message }}</span> @enderror
                     </div>
 
@@ -43,7 +44,7 @@
                         <select class="select" id="category_id" name="category_id">
                             <option value="">-- Seleccione --</option>
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                <option value="{{ $category->id }}" {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>
                                     {{ $category->name }}
                                 </option>
                             @endforeach
@@ -59,7 +60,7 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="price">Precio *</label>
-                        <input class="input" type="number" step="0.01" id="price" name="price" value="{{ old('price') }}" placeholder="1290000">
+                        <input class="input" type="number" step="0.01" id="price" name="price" value="{{ old('price', $product->price) }}">
                         @error('price') <span class="hint" style="color:red;">{{ $message }}</span> @enderror
                     </div>
                 </div>
@@ -67,14 +68,14 @@
                 <div class="form-row">
                     <div class="form-group form-group--full">
                         <label for="description">Descripción *</label>
-                        <textarea class="textarea" id="description" name="description" placeholder="Peso, patrón de cuerdas, tipo de jugador al que le sirve...">{{ old('description') }}</textarea>
+                        <textarea class="textarea" id="description" name="description">{{ old('description', $product->description) }}</textarea>
                         @error('description') <span class="hint" style="color:red;">{{ $message }}</span> @enderror
                     </div>
                 </div>
             </fieldset>
 
             <div class="form-actions">
-                <button class="btn" type="submit">Guardar producto</button>
+                <button class="btn" type="submit">Actualizar producto</button>
                 <a class="btn btn--ghost" href="{{ route('products.index') }}">Cancelar</a>
             </div>
 

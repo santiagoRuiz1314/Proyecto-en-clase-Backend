@@ -19,6 +19,13 @@
 
     
     @include('layout.header')
+
+    @if (session('success'))
+        <div class="container">
+            <p style="background:#d1e7dd; color:#0f5132; padding:10px; margin-top:15px;">{{ session('success') }}</p>
+        </div>
+    @endif
+
     <!-- ============================ CONTENIDO DE CADA VISTA =================== -->
     @yield('content')
     @include('layout.footer')

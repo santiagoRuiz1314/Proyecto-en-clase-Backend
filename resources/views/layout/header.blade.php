@@ -4,14 +4,14 @@
 
             <nav class="nav">
                 <a href="/">Inicio</a>
-                <a class="is-active" href="/product">Raquetas</a>
-                <a href="/product">Categorías</a>
-                <a href="/product/create">Publicar</a>
+                <a class="is-active" href="{{ route('products.index') }}">Raquetas</a>
+                <a href="{{ route('products.index') }}">Categorías</a>
+                <a href="{{ route('products.create') }}">Publicar</a>
             </nav>
 
             <div class="header-actions">
-                <a class="pill" href="/product">Buscar</a>
-                <a class="pill" href="/product">Carrito <span class="count">2</span></a>
+                <a class="pill" href="{{ route('products.index') }}">Buscar</a>
+                <a class="pill" href="{{ route('products.index') }}">Carrito <span class="count">2</span></a>
             </div>
         </div>
     </header>
